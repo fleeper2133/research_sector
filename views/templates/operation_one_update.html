@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+  <form method="post">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: <input type="text" name="title" value="{{ operation.title }}">
+      </li>
+     
+      <li class="list-group-item">Дата начала: <input type="date" name="date_start" value="{{ operation.date_start }}"></li>
+      <li class="list-group-item">Дата сдачи: <input type="date" name="date_finish" value="{{ operation.date_finish }}"></li>
+    </ul>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+
+</div>
+
+</div>
+
+{% endblock %}

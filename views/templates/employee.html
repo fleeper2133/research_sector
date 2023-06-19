@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+<div class="col-md-6">
+{% for employee in employees %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+     <a href="employee/{{ employee.id }}" >ФИО: {{ employee.FIO }}</a>
+  <a href="employee/{{ employee.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="employee/{{ employee.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Занимается операциями: {{ employee.operation|join(', ', attribute='title') }}</li>
+  <li class="list-group-item">Обязанность: {{ employee.duty }}</li>
+  <li class="list-group-item">Квалификация: {{ employee.qualification }}</li>
+</ul>
+
+{% endfor %}
+</div>
+<div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Добавить сотрудника</button>
+<div id='form-wrap'>
+  <form role="form" autocomplete="off" method="POST">
+    <label>ФИО</label>
+    <input type="text" name="FIO">
+    <br>
+    <label>Выберите операции</label>
+    <select name="id_operations" class="form-select" aria-label="multiple select example" size="{{ operations_quantity }}" multiple="multiple">
+    {% for operation in operations %}
+        <option value="{{ operation.id }}">{{ operation.title }}</option>
+    {% endfor %}
+   </select>
+    <br>
+    <label>Обязанность</label>
+    <input type="text" name="duty">
+    <label>Квалификация</label>
+    <input type="text" name="qualification">
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

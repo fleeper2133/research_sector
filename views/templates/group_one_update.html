@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+  <form method="post">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: <input type="text" name="title" value="{{ group.title }}">
+      </li>
+     
+      <li class="list-group-item">Кол-во людей <input type="text" name="quantity_people" value="{{ group.quantity_people }}"></li>
+      <li class="list-group-item">Функциональный признак: <input type="text" name="func_list" value="{{ group.func_list }}"></li>
+    </ul>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+
+</div>
+
+</div>
+
+{% endblock %}

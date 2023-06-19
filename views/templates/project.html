@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+{% for project in projects %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+    <a href="project/{{ project.id }}">Название: {{ project.title }}</a>
+    <a href="project/{{ project.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="project/{{ project.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Направление: {{ project.direction }}</li>
+  <li class="list-group-item">Дата начала: {{ project.date_start }}</li>
+  <li class="list-group-item">Дата сдачи: {{ project.date_finish }}</li>
+</ul>
+
+{% endfor %}
+  </div>
+
+  <div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Создать проект</button>
+<div id='form-wrap'>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Название</label>
+    <input type="text" name="title">
+    <label>Направление</label>
+    <input type="text" name="direction">
+    <label>Дата начала</label>
+    <input type="date" name="date_start">
+    <label>Дата сдачи</label>
+    <input type="date" name="date_finish">
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

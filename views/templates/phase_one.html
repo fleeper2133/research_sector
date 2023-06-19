@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: {{ phase.title }}
+      </li>
+      <li class="list-group-item">Стадия: {{ phase.stage.title }}</li>
+      <li class="list-group-item">Дата начала: {{ phase.date_start }}</li>
+      <li class="list-group-item">Дата сдачи: {{ phase.date_finish }}</li>
+    </ul>
+
+
+</div>
+
+</div>
+
+{% endblock %}

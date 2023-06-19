@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        id: {{ employee_group.id }}
+      </li>
+      <li class="list-group-item">Сотрудник: {{ employee_group.employee.FIO }}</li>
+      <li class="list-group-item">Группа: {{ employee_group.group.title }}</li>
+      <li class="list-group-item">Дата включения: {{ employee_group.date_connect }}</li>
+      <li class="list-group-item">Дата исключения: {{ employee_group.date_disconnect }}</li>
+    </ul>
+
+
+</div>
+
+</div>
+
+{% endblock %}

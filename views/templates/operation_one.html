@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: {{ operation.title }}
+      </li>
+      <li class="list-group-item">Дата начала: {{ operation.date_start }}</li>
+      <li class="list-group-item">Дата сдачи: {{ operation.date_finish }}</li>
+    </ul>
+
+
+</div>
+
+</div>
+
+{% endblock %}

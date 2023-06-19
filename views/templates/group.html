@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-md-6">
+{% for group in groups %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+     <a href="group/{{ group.id }}" >Название: {{ group.title }}</a>
+  <a href="group/{{ group.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="group/{{ group.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Занимается этапами: {{ group.phase|join(', ', attribute='title') }}</li>
+  <li class="list-group-item">Кол-во людей: {{ group.quantity_people }}</li>
+  <li class="list-group-item">Функциональный признак: {{ group.func_list }}</li>
+</ul>
+
+{% endfor %}
+    </div>
+
+  <div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Создать группу</button>
+<div id='form-wrap'>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Название</label>
+    <input type="text" name="title">
+    <br>
+    <label>Выберите этап</label>
+    <select name="id_phases" class="form-select" aria-label="multiple select example" size="{{ phases_quantity }}" multiple="multiple">
+    {% for phase in phases %}
+        <option value="{{ phase.id }}">{{ phase.title }}</option>
+    {% endfor %}
+   </select>
+    <br>
+    <label>Кол-во людей</label>
+    <input type="number" name="quantity_people">
+      <br>
+    <label>Функциональный признак</label>
+    <input type="text" name="func_list">
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

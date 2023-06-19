@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+  <form method="post">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        id: <input type="text" name="id" value="{{ employee_group.id }}">
+      </li>
+       <li class="list-group-item">Выберите сотрудника
+    <select name="id_employee">
+      {% for employee in employees %}
+        <option value="{{ employee.id }}">{{ employee.FIO }}</option>
+      {% endfor %}
+  </select><br>
+         </li>
+    <li class="list-group-item">Выберите группу
+    <select name="id_group">
+      {% for group in groups %}
+        <option value="{{ group.id }}">{{ group.title }}</option>
+      {% endfor %}
+  </select><br></li>
+      <li class="list-group-item">Дата вступления: <input type="date" name="date_connect" value="{{ employee_group.date_connect }}"></li>
+      <li class="list-group-item">Дата исключения: <input type="date" name="date_disconnect" value="{{ employee_group.date_disconnect }}"></li>
+    </ul>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+{% for operation in operations %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+    <a href="operation/{{ operation.id }}" >Название: {{ operation.title }}</a>
+  <a href="operation/{{ operation.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="operation/{{ operation.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Название этапа: {{ operation.phase|join(', ', attribute='title') }}</li>
+  <li class="list-group-item">Дата начала: {{ operation.date_start }}</li>
+  <li class="list-group-item">Дата сдачи: {{ operation.date_finish }}</li>
+</ul>
+
+{% endfor %}
+  </div>
+
+  <div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Создать операцию</button>
+<div id='form-wrap'>
+  <br>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Название операции</label>
+    <input type="text" name="title"><br>
+    <br>
+    <label>Выберите этап</label>
+    <select name="id_phases" class="form-select" aria-label="multiple select example" size="{{ phases_quantity }}" multiple="multiple">
+    {% for phase in phases %}
+        <option value="{{ phase.id }}">{{ phase.title }}</option>
+    {% endfor %}
+   </select>
+    <br>
+    <label>Дата начала</label>
+    <input type="date" name="date_start"><br>
+    <label>Дата сдачи</label>
+    <input type="date" name="date_finish"><br>
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

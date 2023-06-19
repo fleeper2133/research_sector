@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+<div class="col-md-6">
+{% for employee_group in employee_groups %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+     <a href="employee_group/{{ employee_group.id }}" >id: {{ employee_group.id }}</a>
+  <a href="employee_group/{{ employee_group.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="employee_group/{{ employee_group.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Группа: {{ employee_group.group.title }}</li>
+  <li class="list-group-item">Сотрудник: {{ employee_group.employee.FIO }}</li>
+  <li class="list-group-item">Дата вступления: {{ employee_group.date_connect }}</li>
+  <li class="list-group-item">Дата исключения: {{ employee_group.date_disconnect }}</li>
+</ul>
+
+{% endfor %}
+</div>
+<div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Добавить сотрудника в группу</button>
+<div id='form-wrap'>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Выберите сотрудника</label>
+    <select name="id_employee">
+      {% for employee in employees %}
+        <option value="{{ employee.id }}">{{ employee.FIO }}</option>
+      {% endfor %}
+  </select><br>
+    <label>Выберите группу</label>
+    <select name="id_group">
+      {% for group in groups %}
+        <option value="{{ group.id }}">{{ group.title }}</option>
+      {% endfor %}
+  </select><br>
+    <label>Дата включения</label>
+    <input type="date" name="date_connect">
+    <label>Дата исключения</label>
+    <input type="date" name="date_disconnect">
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

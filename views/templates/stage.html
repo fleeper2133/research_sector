@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+
+
+<div class="col-md-6">
+{% for stage in stages %}
+<br>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+    <a href="stage/{{ stage.id }}" >Название: {{ stage.title }}</a>
+  <a href="stage/{{ stage.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="stage/{{ stage.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Название проекта: {{ stage.project.title }}</li>
+  <li class="list-group-item">Дата начала: {{ stage.date_start }}</li>
+  <li class="list-group-item">Дата сдачи: {{ stage.date_finish }}</li>
+</ul>
+
+{% endfor %}
+  </div>
+
+ <div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Создать стадию</button>
+<div id='form-wrap'>
+  <br>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Выберите проект</label>
+    <select name="id_project">
+      {% for project in projects %}
+        <option value="{{ project.id }}">{{ project.title }}</option>
+      {% endfor %}
+  </select><br>
+    <label>Название стадии</label>
+    <input type="text" name="title"><br>
+    <label>Дата начала</label>
+    <input type="date" name="date_start"><br>
+    <label>Дата сдачи</label>
+    <input type="date" name="date_finish"><br>
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

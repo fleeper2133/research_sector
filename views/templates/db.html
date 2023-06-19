@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="mb-3">
+  <form method="post">
+  <label for="exampleFormControlTextarea1" class="form-label">Поле для ввода запроса</label>
+  <textarea name="sql" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <button class="btn" type="submit">Отправить</button>
+  </form>
+</div>
+
+<div>
+  {% for row in result %}
+  <p>{{ row }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: {{ project.title }}
+      </li>
+      <li class="list-group-item">Направление: {{ project.direction }}</li>
+      <li class="list-group-item">Дата начала: {{ project.date_start }}</li>
+      <li class="list-group-item">Дата сдачи: {{ project.date_finish }}</li>
+    </ul>
+
+
+</div>
+
+</div>
+
+{% endblock %}

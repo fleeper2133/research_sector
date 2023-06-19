@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+
+
+<div class="col-md-6">
+
+  <br>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Название: {{ group.title }}
+      </li>
+      <li class="list-group-item">Кол-во людей: {{ group.quantity_people }}</li>
+      <li class="list-group-item">Функциональный признак: {{ group.func_list }}</li>
+    </ul>
+
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+
+
+<div class="col-md-6">
+{% for phase in phases %}
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">
+    <a href="phase/{{ phase.id }}" >Название: {{ phase.title }}</a>
+  <a href="phase/{{ phase.id }}/update" class="btn btn-primary">Изменить</a>
+    <a href="phase/{{ phase.id }}/delete" class="btn btn-danger">Удалить</a>
+  </li>
+  <li class="list-group-item">Название стадии: {{ phase.stage.title }}</li>
+  <li class="list-group-item">Дата начала: {{ phase.date_start }}</li>
+  <li class="list-group-item">Дата сдачи: {{ phase.date_finish }}</li>
+</ul>
+
+{% endfor %}
+</div>
+
+
+ <div class="col-md-6">
+    <br>
+<button onclick='openForm()'>Создать этап</button>
+<div id='form-wrap'>
+  <br>
+  <form role="form" autocomplete="off" method="POST">
+    <label>Выберите стадию</label>
+    <select name="id_stage">
+      {% for stage in stages %}
+        <option value="{{ stage.id }}">{{ stage.title }}</option>
+      {% endfor %}
+  </select><br>
+    <label>Название этапа</label>
+    <input type="text" name="title"><br>
+    <label>Дата начала</label>
+    <input type="date" name="date_start"><br>
+    <label>Дата сдачи</label>
+    <input type="date" name="date_finish"><br>
+    <button type="submit" class="btn btn-success">Создать</button>
+  </form>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
